@@ -28,6 +28,8 @@ Cuando un usuario interactúa con una aplicación basada en el patrón MVC, el f
 6. El Controlador selecciona la Vista apropiada y le pasa los datos.
 7. La Vista utiliza los datos proporcionados por el Controlador para generar la interfaz visual que se presenta al usuario.
 
+# Proyecto - Red Social
+
 ## Dependencias
 
 Este proyecto requiere que se instalen las siguientes dependencias:
@@ -51,3 +53,30 @@ project/
 ├── .gitignore
 └── README.md
 ```
+
+## Base de datos
+Usuarios (Users):
+
+1. id (clave primaria)
+- nombre de usuario
+- correo electrónico
+- contraseña (hash)
+- fecha de registro
+
+2. Publicaciones (Posts):
+- id (clave primaria)
+- contenido
+- fecha de publicación
+- usuario_id (clave foránea que referencia el id de Usuarios)
+
+3. Comentarios (Comments):
+- id (clave primaria)
+- scontenido
+- fecha de comentario
+- usuario_id (clave foránea que referencia el id de Usuarios)
+- publicacion_id (clave foránea que referencia el id de Publicaciones)
+
+4. Seguidores (Followers):
+- id (clave primaria)
+- seguidor_id (clave foránea que referencia el id de Usuarios, el usuario que sigue)
+- seguido_id (clave foránea que referencia el id de Usuarios, el usuario seguido)
