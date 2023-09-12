@@ -1,8 +1,17 @@
-import { Sequelize } from "sequelize";
+import { createPool } from "mysql2";
 
-const sequelize = new Sequelize('red_social', 'root', 'toor', {
-    host: 'localhost',
-    dialect: 'mysql',
-})
+class MySQLDatabase {
+  constructor(config) {
+    this.pool = createPool(config);
+  }
 
-export default sequelize
+  async executeQuery(query, params) {
+    const [rows] = await this.pool.query(query, params);
+  }
+
+  async close() {
+    await this.pool.end();
+  }
+}
+
+export default MySQLDatabase;
